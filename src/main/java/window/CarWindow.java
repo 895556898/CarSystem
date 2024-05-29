@@ -5,10 +5,20 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import main.dao.CarRepository;
+//import org.springframework.context.ApplicationContext;
+//import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+//import config.ApplicationConfig;
+
 public class CarWindow {
 
 	static JFrame window = new JFrame("车辆管理系统");
+	private CarRepository carRepository;
 
+//	public CarWindow() {
+//		ApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfig.class);
+//		this.carRepository = context.getBean(CarRepository.class);
+//	}
 
 	public void closeThis() {
 		window.dispose();

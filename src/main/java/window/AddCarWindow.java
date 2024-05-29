@@ -1,7 +1,7 @@
 package window;
 
-import mapper.CarRepository;
-import org.example.Car;
+import main.dao.CarRepository;
+import main.dao.Car;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import window.way.PlaceholderTextField;
@@ -13,14 +13,12 @@ import java.awt.event.ActionListener;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 @Component
-public class AddCarWindow {
+public class AddCarWindow extends JFrame{
     static JFrame window = new JFrame("车辆管理系统");
 
-    @Autowired
-    private CarRepository carRepository;
+
 
 
     private void placeLogins(JPanel panel) {
@@ -192,6 +190,7 @@ public class AddCarWindow {
 
         //点击录入按钮进行事件
         ActionListener listener1 = new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 try{
                     //设置点击事件
@@ -219,8 +218,9 @@ public class AddCarWindow {
 
                     Car car = new Car(id,Number,Company,BuyTime,Type,Total_Km,CostOil,basicMaintenanceCost,RoadToll);
 
-                    //保存到数据库
-                    carRepository.save(car);
+                    car.showCarInformation();
+//                    //保存到数据库
+                    //carRepository.save(car);
 
                     System.out.println("车辆信息已添加，车辆编号为：" + id);
                 } catch (ParseException ex) {
